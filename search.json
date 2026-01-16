@@ -10,53 +10,193 @@
     ]
   },
   {
-    "objectID": "chapters/gridsearch.html",
-    "href": "chapters/gridsearch.html",
-    "title": "1  Gridsearch",
+    "objectID": "1-gridsearch/summary.html",
+    "href": "1-gridsearch/summary.html",
+    "title": "1  Grid search",
     "section": "",
-    "text": "1.1 Instructions",
+    "text": "1.1 Number of epochs\nThe number of epochs controls how often the full dataset is shown to the model. More epochs means that the model can potentially learn more from the dataset as the model is allowed ‘more time’ to learn. It is expected that more epochs result in a lower loss over time, if the model is complex and capable enough for the given dataset. When the loss reaches a plateau, having more epochs after are not expected to make a meaningful difference anymore and the model is considered to be ‘done learning’.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Gridsearch</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Grid search</span>"
     ]
   },
   {
-    "objectID": "chapters/gridsearch.html#instructions",
-    "href": "chapters/gridsearch.html#instructions",
-    "title": "1  Gridsearch",
-    "section": "",
-    "text": "1.1.1 Report\n\n1.1.1.1 Experiment\nExperiment with things like: - change the number of epochs, eg to 5 or 10. - changing the amount of units1 and units2 to values between 16 and 1024. Use factors of 2 to easily scan the ranges: 16, 32, 64, etc. - changing the batchsize to values between 4 and 128. Again, use factors of two for convenience. - change the depth of your model by adding a additional linear layer + activation function - changing the learningrate to values between 1e-2 and 1e-5 - changing the optimizer from SGD to one of the other available algoritms at torch (scroll down for the algorithms)\nCheck the results: - all your experiments are saved in the modellogs directory, with a timestamp. Inside you find a model.toml file, that contains all the settings of the model. The events file is what tensorboard will show. - visualize the relationship between variables: for example, make a heatmap of units vs layers.\nStudyquestions: - Epochs: what is the upside, what is the downside of increasing epochs? Do you need more epochs to find out which configuration is best? When do you need that, when not? - what is an upside of using factors of 2 for hypertuning? What is a downside?\n\n\n1.1.1.2 Note\nA note on train_steps: this is a setting that determines how often you get an update. Because our complete dataset is 938 (60000 / 64) batches long, you will need 938 trainstep to cover the complete 60.000 images.\nThis can actually be a bit confusion for some students, because changing the value of trainsteps 938 changes the meaning of an epoch slightly, because one epoch is no longer the full dataset, but simply trainstep batches. Setting trainsteps to 100 means you need to wait twice as long before you get feedback on the performance, as compared to trainsteps=50. You will see that settings trainsteps to 100 improves the learning, but that is simply because the model has seen twice as much examples as compared to trainsteps=50.\nThis implies that it is not usefull to compare trainsteps=50 and trainsteps=100, because setting it to 100 will always be better. Just pick an amount that works for your hardware & patience, and adjust your number of epochs accordingly (increase epochs with lower values for trainsteps)\n\n\n\n1.1.2 Reflect\nDoing a master means you don’t just start engineering a pipeline, but you need to reflect. Why do you see the results you see? What does this mean, considering the theory? Write down lessons learned and reflections, based on experimental results. This is the science part of data science.\nYou follow this cycle: - make a hypothesis - design an experiment - run the experiment - analyze the results and draw conclusions - repeat\n\n1.1.2.1 Tip\nTo keep track of this process, it is useful to keep a journal. While you could use anything to do so, a nice command line tool is jrnl. This gives you the advantage of staying in the terminal, just type down your ideas during the process, and you can always look back at what you have done. Try to first formulate a hypothesis, and then design an experiment to test it. This will help you to stay focused on the goal, and not get lost in the data.\nImportant: the report you write is NOT the same as your journal! The journal will help you to keep track of your process, and later write down a reflection on what you have done where you draw conclusion, reflecting back on the theory.\n\n\n\n1.1.3 Make a short report\nMake a short report of your findings. pay attention to: - what was your hypothesis about interaction between hyperparameters? - what did you find? - visualise your results about the relationship between hyperparameters.",
+    "objectID": "1-gridsearch/summary.html#number-of-unitsneurons",
+    "href": "1-gridsearch/summary.html#number-of-unitsneurons",
+    "title": "1  Grid search",
+    "section": "1.2 Number of units/neurons",
+    "text": "1.2 Number of units/neurons\nEach unit/neuron has it’s own perspective on the previous layer, potentially learning something else than other neurons in the same layer. Having many units/neurons in a layer allows learning of many features. It is expected that layers with too few units/neurons result in a model incapable of converging.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Gridsearch</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Grid search</span>"
     ]
   },
   {
-    "objectID": "chapters/ethics.html",
-    "href": "chapters/ethics.html",
-    "title": "2  Ethics",
-    "section": "",
-    "text": "2.1 Model comparison\nEthical models share the common goal of providing readers with a systematic approach to ethical decision making,yet include unique elements that provide varying contextual recommendations (Suarez et al., 2023). Some models offer a generalisable approach affording wider applicability to a variety of ethical situations, and other models provide guidance to navigate specific ethical situations.\nA recent literature review from 2023 considered a total of 55 ethical decision-making models across 60 peer-reviewed journal articles of varying fields of study (Suarez et al., 2023). Medicine dominated the resulting set of models, followed by psychology, education, business, then child and youth care and organizational behaviour management. From these fields of study, two models are considered for comparison. The first model is from the medicine, to be more precise: epidemiology (Soskolne, 1991) and the second model from the secondary field of teaching within education (Ehrich et al., 2011). The steps of both models are displayed in Table 2.1.",
+    "objectID": "1-gridsearch/summary.html#number-of-hidden-layers",
+    "href": "1-gridsearch/summary.html#number-of-hidden-layers",
+    "title": "1  Grid search",
+    "section": "1.3 Number of (hidden) layers",
+    "text": "1.3 Number of (hidden) layers\nLayers in a neural network are not expected to learn individual features per se, but rather (complex) relationships in the data. When a dataset is complex, multiple layers are likely needed for the model to converge.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Ethics</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Grid search</span>"
     ]
   },
   {
-    "objectID": "chapters/ethics.html#model-comparison",
-    "href": "chapters/ethics.html#model-comparison",
-    "title": "2  Ethics",
-    "section": "",
-    "text": "Table 2.1: Steps of two ethical decision models.\n\n\n\n\n\n\n\n\n\n\nStep\nMedicine – epidemiology\nEducation - teaching\n\n\n\n\n1\nData collection.\nAssess the situation and the specific agency requirements.\n\n\n2\nIdentification of the problem or dilemma.\nConsidering dispositional factors.\n\n\n3\nIdentification of alternative actions.\nMaking a comprehensive assessment of the alternatives.\n\n\n4\nMaking a choice.\nMake a judgement.\n\n\n5\nTaking action and evaluating the action.\nDocumenting the decision and being able to justify it.\n\n\n\n\n\n\n\n2.1.1 Similarities\nBoth models require an assessment of the situation. In epidemiology this is based on data, while in teaching this is based on agency requirements and dispositional factors. This assessment forms the basis for the problem or dilemma identification. Also, both models require identification of alternatives and making a choice or judgement based on the best alternative. Al last, both models are sequential.\n\n\n2.1.2 Differences\nThe epidemiology model has a problem-solving component, while the teaching model does not. A problem-solving component is present if the model author(s) guided the model users to identify two or more possible solutions and likely outcomes or consequences to the possible solutions. The epidemiology model encourages users to identify multiple solutions and evaluate them after making a decision, while the teaching model only encourages identification of multiple solutions. Another difference is that the epidemiology model indicates that a decision can be changed later when a solution is not good enough after evaluation, while the teaching model does not.\n\n\n2.1.3 Preference & suitability\nPersonally I prefer the epidemiology ethical model as it allows changing the decision if it turns out that is is not the optimal decision after evaluation. This is also better suited for data science. Suppose some actions are taken prevent a data science model from discrimination but in practice it does not work, this ethical model allows us to change our decision and take different actions for preventing discrimination. For the teaching ethical model, once a decision is made, it set sort of ‘set in stone’.\nThe epidemiology ethical model is also better suited for data science as it focusses on data for the problem identification and alternative actions.",
+    "objectID": "1-gridsearch/summary.html#hyperparameter-effects",
+    "href": "1-gridsearch/summary.html#hyperparameter-effects",
+    "title": "1  Grid search",
+    "section": "1.4 Hyperparameter effects",
+    "text": "1.4 Hyperparameter effects\nThe results of the aforementioned experiments are visualised in Figure 1.1. The number of epochs in Figure 1.1 (a) that the model stops learning at around 10 epochs. The number of units/neurons was then hypertuned and Figure 1.1 (b) shows that the model is learning more in a shorter time. At last, the number of (hidden) layers was hypertuned. As shown in Figure 1.1 (c), the model is more complex and has a higher loss score initially, but manages to learn even faster due to the increased complexity. All three hyperparameters play together to craft a model.\n\n\n\n\n\n\n\n\n\n\n\n(a) Epochs\n\n\n\n\n\n\n\n\n\n\n\n(b) Units/neurons\n\n\n\n\n\n\n\n\n\n\n\n(c) Layers\n\n\n\n\n\n\n\nFigure 1.1: Effects of hyperparameters left to right a) epochs, b) units/neurons & c) layers on test dataset loss.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Ethics</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Grid search</span>"
     ]
   },
   {
-    "objectID": "chapters/ethics.html#breeze-matching",
-    "href": "chapters/ethics.html#breeze-matching",
-    "title": "2  Ethics",
-    "section": "2.2 Breeze matching",
-    "text": "2.2 Breeze matching\nThis assignment is about a discriminating matchmaking algorithm of the Dutch dating app Breeze (Dating-app Breeze mag (en moet) algoritme aanpassen om discriminatie te voorkomen | College voor de Rechten van de Mens, 2023). This matchmaking algorithm calculates a so-called matching chance: an indication of how likely one person may like the other person. Matchmaking happens automatically and is learnt from data that people put into their Breeze profiles and the like-behaviour (users of the Breeze app that indicate whether they like someone or not).\nThe developers of the app, Breeze Social B.V., got the suspicion that their algorithm was discriminating as some customers made complaints. They indicated that people suggested by the algorithm were not diverse enough, leading to people with a dark skin colour or non-Dutch background to stop using the app.\nBreeze Social B.V. asked the Netherlands Institute for Human Rights whether they are allowed to adjust their algorithm to stop it from discriminating. I think that they made the right choice to at least questioning whether their algorithm was ethically sound. This shows a sense of ownership and responsibility regarding their algorithm. The institute indicated that Breeze Social B.V. are allowed and, in fact, must adjust the algorithm to stop it from discriminating. The first suggested adjustment was to raise the matching chance of people with a certain skin colour but was rejected by the institute. As the article points out, this leads to the opposite: the algorithm still discriminates but now favours some people with a certain skin colour. This is not ideal in my opinion as some people get some sort of priority treatment this way. The second suggested adjustment was better: compensate the matching score to be equally high for all skin colours. Now there is no discrimination happening and everyone is at least equally often suggested to other people.\n\n2.2.1 Dilemma visualisation\nThe dilemma described above is visualised as a directed acyclic graph (DAG) in Figure 2.1. There are 3 distinct components: 1) stakeholders, 2) choices and 3) consequences. Choices are for Breeze Social B.V. and the results are focussed towards the users of Breeze, how a choice would affect a group of users.\nAfter making this diagram I realised that the motivation for changing the matchmaking algorithm is not really made clear. The article mentioned customer complaints, but is that the real motivation? Breeze Social B.V. is a company that needs money to continue existing and they get that from their users, as one needs to pay upfront for a date (after a match was made). Is it goodwill to please their customers or is it really more about maximising their income? In either case, both parties would benefit if the algorithm would not discriminate.\n\n\n\n\n\n\nFigure 2.1: A directed acyclic graph (DAG) visualisation of the discriminating Breeze matchmaking algorithm dilemma.\n\n\n\n\n\n\n\nDating-app Breeze mag (en moet) algoritme aanpassen om discriminatie te voorkomen | College voor de Rechten van de Mens. (2023). https://www.mensenrechten.nl/actueel/nieuws/2023/09/06/dating-app-breeze-mag-en-moet-algoritme-aanpassen-om-discriminatie-te-voorkomen\n\n\nEhrich, L. C., Kimber, M., Millwater, J., & Cranston, N. (2011). Ethical dilemmas: a model to understand teacher practice. Teachers and Teaching, 17(2), 173–185. https://doi.org/10.1080/13540602.2011.539794\n\n\nSoskolne, C. (1991). Ethical decision-making in epidemiology: The case study approach. Journal of Clinical Epidemiology, 44, 125–130. https://doi.org/10.1016/0895-4356(91)90187-E\n\n\nSuarez, V. D., Marya, V., Weiss, M. J., & Cox, D. (2023). Examination of Ethical Decision-Making Models Across Disciplines: Common Elements and Application to the Field of Behavior Analysis. Behavior Analysis in Practice, 16(3), 657–671. https://doi.org/10.1007/s40617-022-00753-1",
+    "objectID": "1-gridsearch/summary.html#grid-search-approach",
+    "href": "1-gridsearch/summary.html#grid-search-approach",
+    "title": "1  Grid search",
+    "section": "1.5 Grid search approach",
+    "text": "1.5 Grid search approach\nAt last, grid search is killing when the parameter space is big. For example: when having just 2 layers and 3 options for the number of units/neurons, the number of options in the hyperparameter search space is just \\(3^2 = 9\\). But when there are 7 layers and 5 options for the number of units/neurons per layer, then there are suddenly \\(5^7 = 78.125\\) options. Assuming every experiment lasts 30 seconds, searching through 9 options only takes 4,5 minutes. But the latter case then takes about a whopping 27 days to search through.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Ethics</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Grid search</span>"
+    ]
+  },
+  {
+    "objectID": "2-mlflow/summary.html",
+    "href": "2-mlflow/summary.html",
+    "title": "2  MLflow",
+    "section": "",
+    "text": "2.1 Dropout layers\nThe model in Chapter 1 was refined further with the addition of the following three types of layers:\nDropout is expected to make it harder for the model during training to learn from the dataset by randomly deactivating neurons. By doing this, the model should create some redundancy to overcome the dropout. But when evaluating/testing, dropout is not applied and the redundancy should result in a lower loss score.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>MLflow</span>"
+    ]
+  },
+  {
+    "objectID": "2-mlflow/summary.html#convolutional-layers",
+    "href": "2-mlflow/summary.html#convolutional-layers",
+    "title": "2  MLflow",
+    "section": "2.2 Convolutional layers",
+    "text": "2.2 Convolutional layers\nInstead of having fully connected (linear) layers, convolutional layers are an alternative that require war fewer neurons and can thus process larger pictures than fully connected layers. This works by moving a kernel over the input that is expected to learn different features from the input. It is therefore expected that a convolutional layer can learn different features faster than fully connected layers.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>MLflow</span>"
+    ]
+  },
+  {
+    "objectID": "2-mlflow/summary.html#batch-normalisation",
+    "href": "2-mlflow/summary.html#batch-normalisation",
+    "title": "2  MLflow",
+    "section": "2.3 Batch normalisation",
+    "text": "2.3 Batch normalisation\nThis type of layer re-centers the outputs of the previous layer around zero and re-scales them to a standard size. In theory this helps the model learn faster and combats exploding and vanishing gradients. Naturally, it is expected that the model converges faster with batch normalisation.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>MLflow</span>"
+    ]
+  },
+  {
+    "objectID": "2-mlflow/summary.html#hyperparameter-effects",
+    "href": "2-mlflow/summary.html#hyperparameter-effects",
+    "title": "2  MLflow",
+    "section": "2.4 Hyperparameter effects",
+    "text": "2.4 Hyperparameter effects\nThe effects of the experiments listed abore are visualised in Figure 2.1. First, different percentages of dropout were experimented with. It became clear that higher percentages of dropout can reduce the model’s ability to converge and it takes longer to converge, as seen in Figure 2.1 (a). Then the first 2 fully connected layers were replaced with convolutional layers. Suddenly the model was able to converge really fast in about 6 epochs, as seen in Figure 2.1 (b). But it also indicates that the model was getting quite complex and started overfitting. At last, batch normalisation was applied and now the model converged even faster (see Figure 2.1 (c)): in 3 epochs the test loss score reached a plateau. It interestingly also had the effect that the model didn’t overfit as fast as without batch normalisation.\n\n\n\n\n\n\n\n\n\n\n\n(a) Dropout\n\n\n\n\n\n\n\n\n\n\n\n(b) Convolutions\n\n\n\n\n\n\n\n\n\n\n\n(c) Normalisation\n\n\n\n\n\n\n\nFigure 2.1: Effects of hyperparameters left to right a) dropout, b) convolutions & c) normalisation on test dataset loss.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>MLflow</span>"
+    ]
+  },
+  {
+    "objectID": "3-rnn/summary.html",
+    "href": "3-rnn/summary.html",
+    "title": "3  RNN",
+    "section": "",
+    "text": "3.1 Default GRU model\nTo start, the following parameters of the default GRU model is capable to reach 90% accuracy after 14 epochs instead of the default 3 (see Figure 3.1):\nAdjustments to the default GRU model or different models are considered ‘better’ if it can reach at least 90% accuracy in less than 14 epochs.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RNN</span>"
+    ]
+  },
+  {
+    "objectID": "3-rnn/summary.html#default-gru-model",
+    "href": "3-rnn/summary.html#default-gru-model",
+    "title": "3  RNN",
+    "section": "",
+    "text": "config = ModelConfig(\n    input_size=3,\n    hidden_size=64,\n    num_layers=1,\n    output_size=20,\n    dropout=0.1,\n)\n\n\n\n\n\n\nFigure 3.1: Accuracy metric from the default GRU model.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RNN</span>"
+    ]
+  },
+  {
+    "objectID": "3-rnn/summary.html#gru-tweaking",
+    "href": "3-rnn/summary.html#gru-tweaking",
+    "title": "3  RNN",
+    "section": "3.2 GRU tweaking",
+    "text": "3.2 GRU tweaking\nImproving the default GRU model was surprisingly easy. What was learnt in Chapter 1 about (hidden) layers and the number of units/neurons, along with dropout from Chapter 2, these three hyperparameters were manually tuned. It resulted in a GRU model that can reach 90% accuracy in only 4 epochs (see Figure 3.2 (a)) and was not overfitting (see Figure 3.2 (b)). Surprisingly the number of units/neurons in (hidden) layers heavily influenced the GRU model. More units/neurons almost always increased the pace of convergence, and anything below 32 units/neurons made the model really slow to converge.\nconfig = ModelConfig(\n    input_size=3,\n    hidden_size=128 + 32,  # Changed, was 64\n    num_layers=3,          # Changed, was 1\n    output_size=20,\n    dropout=0.2,           # changed, was 0.1\n)\n\n\n\n\n\n\n\n\n\n\n\n(a) Accuracy metric from the default GRU model.\n\n\n\n\n\n\n\n\n\n\n\n(b) Accuracy metric from the default GRU model.\n\n\n\n\n\n\n\nFigure 3.2: Results of manual hyperparameter tuning for a GRU model.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RNN</span>"
+    ]
+  },
+  {
+    "objectID": "3-rnn/summary.html#lstm-model",
+    "href": "3-rnn/summary.html#lstm-model",
+    "title": "3  RNN",
+    "section": "3.3 LSTM model",
+    "text": "3.3 LSTM model\nThis type of model had another peculiarity. Like GRU, LSTM was able to reach 90% accuracy in fast in 10 epochs. But unlike GRU, LSTM was highly susceptible more units/neurons and layers, making it converge slower (seen in Figure 3.3). Instead, having fewer units/neurons and layers than GRU benefited LSTM. Below are the optimal hyperparameters for the LSTM model with this dataset:\nconfig = ModelConfig(\n    input_size=3,\n    output_size=20,\n    hidden_size=96,\n    num_layers=2,\n    dropout=0.2,\n)\n\n\n\n\n\n\nFigure 3.3: Effects of different hyperparameters on convergence rate of an LSTM model.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RNN</span>"
+    ]
+  },
+  {
+    "objectID": "4-ray/summary.html",
+    "href": "4-ray/summary.html",
+    "title": "4  Ray (W.I.P.)",
+    "section": "",
+    "text": "To be worked on in week 04 (19-01-2026 till 25-01-2026)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Ray (W.I.P.)</span>"
+    ]
+  },
+  {
+    "objectID": "5-deployment/summary.html",
+    "href": "5-deployment/summary.html",
+    "title": "5  Deployment",
+    "section": "",
+    "text": "This is the deployment of a street language generator, using Docker. The generator was trained on Helmonds dialect in a fully automated fashion using a Makefile. The street language generator is available on https://slanggen.mxlab.nl/. For reference, a screenshot of the generator can be found in Figure 5.1.\n\n\n\n\n\n\nNoteNote: start the VM\n\n\n\n\n\nThe street language generator is hosted on a SURF Research Cloud virtual machine (VM). You might need to start the VM, as it is paused by default to conserve credits. To start the VM, do the following:\n\nOpen the SURF Research Cloud dashboard.\nSearch for UOS3-MJHNollet.\nClick on Resume ▶️.\nWait for the VM to resume.\n\n\n\n\n\n\n\n\n\n\nFigure 5.1: Screenshot of the working street language generator (Helmonds)\n\n\n\nThe street language generator is available as a Docker image on https://github.com/MaxNollet/MADS-ML-MaxN/pkgs/container/slanggen. Below is an example Docker compose to run the model:\n---\nservices:\n  slanggen:\n    image: ghcr.io/maxnollet/slanggen:0.4\n    container_name: slanggen\n    restart: unless-stopped\n    ports:\n      - 8000:8000",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Deployment</span>"
+    ]
+  },
+  {
+    "objectID": "6-ethics/summary.html",
+    "href": "6-ethics/summary.html",
+    "title": "6  Ethics",
+    "section": "",
+    "text": "6.1 Model comparison\nEthical models share the common goal of providing readers with a systematic approach to ethical decision making,yet include unique elements that provide varying contextual recommendations (Suarez et al., 2023). Some models offer a generalisable approach affording wider applicability to a variety of ethical situations, and other models provide guidance to navigate specific ethical situations.\nA recent literature review from 2023 considered a total of 55 ethical decision-making models across 60 peer-reviewed journal articles of varying fields of study (Suarez et al., 2023). Medicine dominated the resulting set of models, followed by psychology, education, business, then child and youth care and organizational behaviour management. From these fields of study, two models are considered for comparison. The first model is from the medicine, to be more precise: epidemiology (Soskolne, 1991) and the second model from the secondary field of teaching within education (Ehrich et al., 2011). The steps of both models are displayed in Table 6.1.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Ethics</span>"
+    ]
+  },
+  {
+    "objectID": "6-ethics/summary.html#model-comparison",
+    "href": "6-ethics/summary.html#model-comparison",
+    "title": "6  Ethics",
+    "section": "",
+    "text": "Table 6.1: Steps of two ethical decision models.\n\n\n\n\n\n\n\n\n\n\nStep\nMedicine – epidemiology\nEducation - teaching\n\n\n\n\n1\nData collection.\nAssess the situation and the specific agency requirements.\n\n\n2\nIdentification of the problem or dilemma.\nConsidering dispositional factors.\n\n\n3\nIdentification of alternative actions.\nMaking a comprehensive assessment of the alternatives.\n\n\n4\nMaking a choice.\nMake a judgement.\n\n\n5\nTaking action and evaluating the action.\nDocumenting the decision and being able to justify it.\n\n\n\n\n\n\n\n6.1.1 Similarities\nBoth models require an assessment of the situation. In epidemiology this is based on data, while in teaching this is based on agency requirements and dispositional factors. This assessment forms the basis for the problem or dilemma identification. Also, both models require identification of alternatives and making a choice or judgement based on the best alternative. Al last, both models are sequential.\n\n\n6.1.2 Differences\nThe epidemiology model has a problem-solving component, while the teaching model does not. A problem-solving component is present if the model author(s) guided the model users to identify two or more possible solutions and likely outcomes or consequences to the possible solutions. The epidemiology model encourages users to identify multiple solutions and evaluate them after making a decision, while the teaching model only encourages identification of multiple solutions. Another difference is that the epidemiology model indicates that a decision can be changed later when a solution is not good enough after evaluation, while the teaching model does not.\n\n\n6.1.3 Preference & suitability\nPersonally I prefer the epidemiology ethical model as it allows changing the decision if it turns out that is is not the optimal decision after evaluation. This is also better suited for data science. Suppose some actions are taken prevent a data science model from discrimination but in practice it does not work, this ethical model allows us to change our decision and take different actions for preventing discrimination. For the teaching ethical model, once a decision is made, it set sort of ‘set in stone’.\nThe epidemiology ethical model is also better suited for data science as it focusses on data for the problem identification and alternative actions.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Ethics</span>"
+    ]
+  },
+  {
+    "objectID": "6-ethics/summary.html#breeze-matching",
+    "href": "6-ethics/summary.html#breeze-matching",
+    "title": "6  Ethics",
+    "section": "6.2 Breeze matching",
+    "text": "6.2 Breeze matching\nThis assignment is about a discriminating matchmaking algorithm of the Dutch dating app Breeze (Dating-app Breeze mag (en moet) algoritme aanpassen om discriminatie te voorkomen | College voor de Rechten van de Mens, 2023). This matchmaking algorithm calculates a so-called matching chance: an indication of how likely one person may like the other person. Matchmaking happens automatically and is learnt from data that people put into their Breeze profiles and the like-behaviour (users of the Breeze app that indicate whether they like someone or not).\nThe developers of the app, Breeze Social B.V., got the suspicion that their algorithm was discriminating as some customers made complaints. They indicated that people suggested by the algorithm were not diverse enough, leading to people with a dark skin colour or non-Dutch background to stop using the app.\nBreeze Social B.V. asked the Netherlands Institute for Human Rights whether they are allowed to adjust their algorithm to stop it from discriminating. I think that they made the right choice to at least questioning whether their algorithm was ethically sound. This shows a sense of ownership and responsibility regarding their algorithm. The institute indicated that Breeze Social B.V. are allowed and, in fact, must adjust the algorithm to stop it from discriminating. The first suggested adjustment was to raise the matching chance of people with a certain skin colour but was rejected by the institute. As the article points out, this leads to the opposite: the algorithm still discriminates but now favours some people with a certain skin colour. This is not ideal in my opinion as some people get some sort of priority treatment this way. The second suggested adjustment was better: compensate the matching score to be equally high for all skin colours. Now there is no discrimination happening and everyone is at least equally often suggested to other people.\n\n6.2.1 Dilemma visualisation\nThe dilemma described above is visualised as a directed acyclic graph (DAG) in Figure 6.1. There are 3 distinct components: 1) stakeholders, 2) choices and 3) consequences. Choices are for Breeze Social B.V. and the results are focussed towards the users of Breeze, how a choice would affect a group of users.\nAfter making this diagram I realised that the motivation for changing the matchmaking algorithm is not really made clear. The article mentioned customer complaints, but is that the real motivation? Breeze Social B.V. is a company that needs money to continue existing and they get that from their users, as one needs to pay upfront for a date (after a match was made). Is it goodwill to please their customers or is it really more about maximising their income? In either case, both parties would benefit if the algorithm would not discriminate.\n\n\n\n\n\n\nFigure 6.1: A directed acyclic graph (DAG) visualisation of the discriminating Breeze matchmaking algorithm dilemma.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Ethics</span>"
+    ]
+  },
+  {
+    "objectID": "6-ethics/summary.html#references",
+    "href": "6-ethics/summary.html#references",
+    "title": "6  Ethics",
+    "section": "6.3 References",
+    "text": "6.3 References\n\n\nDating-app Breeze mag (en moet) algoritme aanpassen om discriminatie\nte voorkomen | College voor de Rechten van de Mens. (2023). https://www.mensenrechten.nl/actueel/nieuws/2023/09/06/dating-app-breeze-mag-en-moet-algoritme-aanpassen-om-discriminatie-te-voorkomen\n\n\nEhrich, L. C., Kimber, M., Millwater, J., & Cranston, N. (2011).\nEthical dilemmas: a model to understand teacher practice. Teachers\nand Teaching, 17(2), 173–185. https://doi.org/10.1080/13540602.2011.539794\n\n\nSoskolne, C. (1991). Ethical decision-making in epidemiology: The case\nstudy approach. Journal of Clinical Epidemiology, 44,\n125–130. https://doi.org/10.1016/0895-4356(91)90187-E\n\n\nSuarez, V. D., Marya, V., Weiss, M. J., & Cox, D. (2023).\nExamination of Ethical Decision-Making Models Across Disciplines: Common\nElements and Application to the Field of Behavior Analysis. Behavior\nAnalysis in Practice, 16(3), 657–671. https://doi.org/10.1007/s40617-022-00753-1",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Ethics</span>"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Ethics – MADS portfolio</title>
+<title>1&nbsp; Grid search – MADS portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +30,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/references.html" rel="next">
-<link href="../chapters/deployment.html" rel="prev">
+<link href="../2-mlflow/summary.html" rel="next">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -91,6 +71,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -103,7 +112,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ethics.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ethics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1-gridsearch/summary.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Grid search</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -139,26 +148,38 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_gridsearch/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Gridsearch</span></span></a>
+  <a href="../1-gridsearch/summary.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Grid search</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/deployment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deployment</span></span></a>
+  <a href="../2-mlflow/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">MLflow</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/ethics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
+  <a href="../3-rnn/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RNN</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="../4-ray/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ray (W.I.P.)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../5-deployment/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Deployment</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../6-ethics/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
   </div>
 </li>
     </ul>
@@ -171,16 +192,11 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#model-comparison" id="toc-model-comparison" class="nav-link active" data-scroll-target="#model-comparison"><span class="header-section-number">3.1</span> Model comparison</a>
-  <ul class="collapse">
-  <li><a href="#similarities" id="toc-similarities" class="nav-link" data-scroll-target="#similarities"><span class="header-section-number">3.1.1</span> Similarities</a></li>
-  <li><a href="#differences" id="toc-differences" class="nav-link" data-scroll-target="#differences"><span class="header-section-number">3.1.2</span> Differences</a></li>
-  <li><a href="#preference-suitability" id="toc-preference-suitability" class="nav-link" data-scroll-target="#preference-suitability"><span class="header-section-number">3.1.3</span> Preference &amp; suitability</a></li>
-  </ul></li>
-  <li><a href="#breeze-matching" id="toc-breeze-matching" class="nav-link" data-scroll-target="#breeze-matching"><span class="header-section-number">3.2</span> Breeze matching</a>
-  <ul class="collapse">
-  <li><a href="#dilemma-visualisation" id="toc-dilemma-visualisation" class="nav-link" data-scroll-target="#dilemma-visualisation"><span class="header-section-number">3.2.1</span> Dilemma visualisation</a></li>
-  </ul></li>
+  <li><a href="#number-of-epochs" id="toc-number-of-epochs" class="nav-link active" data-scroll-target="#number-of-epochs"><span class="header-section-number">1.1</span> Number of epochs</a></li>
+  <li><a href="#number-of-unitsneurons" id="toc-number-of-unitsneurons" class="nav-link" data-scroll-target="#number-of-unitsneurons"><span class="header-section-number">1.2</span> Number of units/neurons</a></li>
+  <li><a href="#number-of-hidden-layers" id="toc-number-of-hidden-layers" class="nav-link" data-scroll-target="#number-of-hidden-layers"><span class="header-section-number">1.3</span> Number of (hidden) layers</a></li>
+  <li><a href="#hyperparameter-effects" id="toc-hyperparameter-effects" class="nav-link" data-scroll-target="#hyperparameter-effects"><span class="header-section-number">1.4</span> Hyperparameter effects</a></li>
+  <li><a href="#grid-search-approach" id="toc-grid-search-approach" class="nav-link" data-scroll-target="#grid-search-approach"><span class="header-section-number">1.5</span> Grid search approach</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +205,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ethics</span></h1>
+<h1 class="title"><span id="sec-grid-search" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Grid search</span></span></h1>
 </div>
 
 
@@ -206,110 +222,74 @@ div.csl-indent {
 </header>
 
 
-<section id="model-comparison" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="model-comparison"><span class="header-section-number">3.1</span> Model comparison</h2>
-<p>Ethical models share the common goal of providing readers with a systematic approach to ethical decision making,yet include unique elements that provide varying contextual recommendations <span class="citation" data-cites="suarez2023">(<a href="references.html#ref-suarez2023" role="doc-biblioref">Suarez et al., 2023</a>)</span>. Some models offer a generalisable approach affording wider applicability to a variety of ethical situations, and other models provide guidance to navigate specific ethical situations.</p>
-<p>A recent literature review from 2023 considered a total of 55 ethical decision-making models across 60 peer-reviewed journal articles of varying fields of study <span class="citation" data-cites="suarez2023">(<a href="references.html#ref-suarez2023" role="doc-biblioref">Suarez et al., 2023</a>)</span>. Medicine dominated the resulting set of models, followed by psychology, education, business, then child and youth care and organizational behaviour management. From these fields of study, two models are considered for comparison. The first model is from the medicine, to be more precise: epidemiology <span class="citation" data-cites="soskolne1991">(<a href="references.html#ref-soskolne1991" role="doc-biblioref">Soskolne, 1991</a>)</span> and the second model from the secondary field of teaching within education <span class="citation" data-cites="ehrich2011">(<a href="references.html#ref-ehrich2011" role="doc-biblioref">Ehrich et al., 2011</a>)</span>. The steps of both models are displayed in <a href="#tbl-letters" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
-<div id="tbl-letters" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: Steps of two ethical decision models.
-</figcaption>
-<div aria-describedby="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 37%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Step</th>
-<th>Medicine – epidemiology</th>
-<th>Education - teaching</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Data collection.</td>
-<td>Assess the situation and the specific agency requirements.</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Identification of the problem or dilemma.</td>
-<td>Considering dispositional factors.</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Identification of alternative actions.</td>
-<td>Making a comprehensive assessment of the alternatives.</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Making a choice.</td>
-<td>Make a judgement.</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>Taking action and evaluating the action.</td>
-<td>Documenting the decision and being able to justify it.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<section id="similarities" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="similarities"><span class="header-section-number">3.1.1</span> Similarities</h3>
-<p>Both models require an assessment of the situation. In epidemiology this is based on data, while in teaching this is based on agency requirements and dispositional factors. This assessment forms the basis for the problem or dilemma identification. Also, both models require identification of alternatives and making a choice or judgement based on the best alternative. Al last, both models are sequential.</p>
+<section id="number-of-epochs" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="number-of-epochs"><span class="header-section-number">1.1</span> Number of epochs</h2>
+<p>The number of epochs controls how often the full dataset is shown to the model. More epochs means that the model can potentially learn more from the dataset as the model is allowed ‘more time’ to learn. It is expected that more epochs result in a lower loss over time, if the model is complex and capable enough for the given dataset. When the loss reaches a plateau, having more epochs after are not expected to make a meaningful difference anymore and the model is considered to be ‘done learning’.</p>
 </section>
-<section id="differences" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="differences"><span class="header-section-number">3.1.2</span> Differences</h3>
-<p>The epidemiology model has a problem-solving component, while the teaching model does not. A problem-solving component is present if the model author(s) guided the model users to identify two or more possible solutions and likely outcomes or consequences to the possible solutions. The epidemiology model encourages users to identify multiple solutions and evaluate them after making a decision, while the teaching model only encourages identification of multiple solutions. Another difference is that the epidemiology model indicates that a decision can be changed later when a solution is not good enough after evaluation, while the teaching model does not.</p>
+<section id="number-of-unitsneurons" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="number-of-unitsneurons"><span class="header-section-number">1.2</span> Number of units/neurons</h2>
+<p>Each unit/neuron has it’s own perspective on the previous layer, potentially learning something else than other neurons in the same layer. Having many units/neurons in a layer allows learning of many features. It is expected that layers with too few units/neurons result in a model incapable of converging.</p>
 </section>
-<section id="preference-suitability" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="preference-suitability"><span class="header-section-number">3.1.3</span> Preference &amp; suitability</h3>
-<p>Personally I prefer the epidemiology ethical model as it allows changing the decision if it turns out that is is not the optimal decision after evaluation. This is also better suited for data science. Suppose some actions are taken prevent a data science model from discrimination but in practice it does not work, this ethical model allows us to change our decision and take different actions for preventing discrimination. For the teaching ethical model, once a decision is made, it set sort of ‘set in stone’.</p>
-<p>The epidemiology ethical model is also better suited for data science as it focusses on data for the problem identification and alternative actions.</p>
+<section id="number-of-hidden-layers" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="number-of-hidden-layers"><span class="header-section-number">1.3</span> Number of (hidden) layers</h2>
+<p>Layers in a neural network are not expected to learn individual features per se, but rather (complex) relationships in the data. When a dataset is complex, multiple layers are likely needed for the model to converge.</p>
 </section>
-</section>
-<section id="breeze-matching" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="breeze-matching"><span class="header-section-number">3.2</span> Breeze matching</h2>
-<p>This assignment is about a discriminating matchmaking algorithm of the Dutch dating app Breeze <span class="citation" data-cites="dating-a2023">(<a href="references.html#ref-dating-a2023" role="doc-biblioref"><em>Dating-app Breeze mag (en moet) algoritme aanpassen om discriminatie te voorkomen | College voor de Rechten van de Mens</em>, 2023</a>)</span>. This matchmaking algorithm calculates a so-called matching chance: an indication of how likely one person may like the other person. Matchmaking happens automatically and is learnt from data that people put into their Breeze profiles and the like-behaviour (users of the Breeze app that indicate whether they like someone or not).</p>
-<p>The developers of the app, Breeze Social B.V., got the suspicion that their algorithm was discriminating as some customers made complaints. They indicated that people suggested by the algorithm were not diverse enough, leading to people with a dark skin colour or non-Dutch background to stop using the app.</p>
-<p>Breeze Social B.V. asked the Netherlands Institute for Human Rights whether they are allowed to adjust their algorithm to stop it from discriminating. I think that they made the right choice to at least questioning whether their algorithm was ethically sound. This shows a sense of ownership and responsibility regarding their algorithm. The institute indicated that Breeze Social B.V. are allowed and, in fact, must adjust the algorithm to stop it from discriminating. The first suggested adjustment was to raise the matching chance of people with a certain skin colour but was rejected by the institute. As the article points out, this leads to the opposite: the algorithm still discriminates but now favours some people with a certain skin colour. This is not ideal in my opinion as some people get some sort of priority treatment this way. The second suggested adjustment was better: compensate the matching score to be equally high for all skin colours. Now there is no discrimination happening and everyone is at least equally often suggested to other people.</p>
-<section id="dilemma-visualisation" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="dilemma-visualisation"><span class="header-section-number">3.2.1</span> Dilemma visualisation</h3>
-<p>The dilemma described above is visualised as a directed acyclic graph (DAG) in <a href="#fig-breeze-dag" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>. There are 3 distinct components: 1) stakeholders, 2) choices and 3) consequences. Choices are for Breeze Social B.V. and the results are focussed towards the users of Breeze, how a choice would affect a group of users.</p>
-<p>After making this diagram I realised that the motivation for changing the matchmaking algorithm is not really made clear. The article mentioned customer complaints, but is that the real motivation? Breeze Social B.V. is a company that needs money to continue existing and they get that from their users, as one needs to pay upfront for a date (after a match was made). Is it goodwill to please their customers or is it really more about maximising their income? In either case, both parties would benefit if the algorithm would not discriminate.</p>
-<div id="fig-breeze-dag" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="hyperparameter-effects" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="hyperparameter-effects"><span class="header-section-number">1.4</span> Hyperparameter effects</h2>
+<p>The results of the aforementioned experiments are visualised in <a href="#fig-results-gridsearch" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>. The number of epochs in <a href="#fig-results-epochs" class="quarto-xref">Figure&nbsp;<span>1.1 (a)</span></a> that the model stops learning at around 10 epochs. The number of units/neurons was then hypertuned and <a href="#fig-results-units" class="quarto-xref">Figure&nbsp;<span>1.1 (b)</span></a> shows that the model is learning more in a shorter time. At last, the number of (hidden) layers was hypertuned. As shown in <a href="#fig-results-layers" class="quarto-xref">Figure&nbsp;<span>1.1 (c)</span></a>, the model is more complex and has a higher loss score initially, but manages to learn even faster due to the increased complexity. All three hyperparameters play together to craft a model.</p>
+<div id="fig-results-gridsearch" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-breeze-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="assets/breeze_dag.svg" class="img-fluid figure-img">
+<div aria-describedby="fig-results-gridsearch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-results-gridsearch" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-results-epochs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-results-epochs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="results_01_epochs.png" class="img-fluid figure-img" data-ref-parent="fig-results-gridsearch">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-breeze-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: A directed acyclic graph (DAG) visualisation of the discriminating Breeze matchmaking algorithm dilemma.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-results-epochs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Epochs
 </figcaption>
 </figure>
 </div>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-dating-a2023" class="csl-entry" role="listitem">
-<em>Dating-app Breeze mag (en moet) algoritme aanpassen om discriminatie te voorkomen | College voor de Rechten van de Mens</em>. (2023). <a href="https://www.mensenrechten.nl/actueel/nieuws/2023/09/06/dating-app-breeze-mag-en-moet-algoritme-aanpassen-om-discriminatie-te-voorkomen">https://www.mensenrechten.nl/actueel/nieuws/2023/09/06/dating-app-breeze-mag-en-moet-algoritme-aanpassen-om-discriminatie-te-voorkomen</a>
 </div>
-<div id="ref-ehrich2011" class="csl-entry" role="listitem">
-Ehrich, L. C., Kimber, M., Millwater, J., &amp; Cranston, N. (2011). Ethical dilemmas: a model to understand teacher practice. <em>Teachers and Teaching</em>, <em>17</em>(2), 173–185. <a href="https://doi.org/10.1080/13540602.2011.539794">https://doi.org/10.1080/13540602.2011.539794</a>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-results-gridsearch" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-results-units" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-results-units-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="results_01_units.png" class="img-fluid figure-img" data-ref-parent="fig-results-gridsearch">
 </div>
-<div id="ref-soskolne1991" class="csl-entry" role="listitem">
-Soskolne, C. (1991). Ethical decision-making in epidemiology: The case study approach. <em>Journal of Clinical Epidemiology</em>, <em>44</em>, 125–130. <a href="https://doi.org/10.1016/0895-4356(91)90187-E">https://doi.org/10.1016/0895-4356(91)90187-E</a>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-results-units-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Units/neurons
+</figcaption>
+</figure>
 </div>
-<div id="ref-suarez2023" class="csl-entry" role="listitem">
-Suarez, V. D., Marya, V., Weiss, M. J., &amp; Cox, D. (2023). Examination of Ethical Decision-Making Models Across Disciplines: Common Elements and Application to the Field of Behavior Analysis. <em>Behavior Analysis in Practice</em>, <em>16</em>(3), 657–671. <a href="https://doi.org/10.1007/s40617-022-00753-1">https://doi.org/10.1007/s40617-022-00753-1</a>
 </div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-results-gridsearch" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-results-layers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-results-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="results_01_layers.png" class="img-fluid figure-img" data-ref-parent="fig-results-gridsearch">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-results-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Layers
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-results-gridsearch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Effects of hyperparameters left to right a) epochs, b) units/neurons &amp; c) layers on test dataset loss.
+</figcaption>
+</figure>
 </div>
 </section>
+<section id="grid-search-approach" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="grid-search-approach"><span class="header-section-number">1.5</span> Grid search approach</h2>
+<p>At last, grid search is killing when the parameter space is big. For example: when having just 2 layers and 3 options for the number of units/neurons, the number of options in the hyperparameter search space is just <span class="math inline">\(3^2 = 9\)</span>. But when there are 7 layers and 5 options for the number of units/neurons per layer, then there are suddenly <span class="math inline">\(5^7 = 78.125\)</span> options. Assuming every experiment lasts 30 seconds, searching through 9 options only takes 4,5 minutes. But the latter case then takes about a whopping 27 days to search through.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -715,13 +695,13 @@ Suarez, V. D., Marya, V., Weiss, M. J., &amp; Cox, D. (2023). Examination of Eth
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/deployment.html" class="pagination-link" aria-label="Deployment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deployment</span></span>
+      <a href="../index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../2-mlflow/summary.html" class="pagination-link" aria-label="MLflow">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">MLflow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
