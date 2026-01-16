@@ -755,5 +755,13 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks,visualstudio,visualstudiocode,pycharm+all,windows,linux,macos
 
 
-# Marimo
-__marimo__
+### Quarto ###
+_book
+/.quarto/
+**/*.quarto_ipynb
+
+
+### Logs ###
+mlruns/
+modellogs*/
+gestures/

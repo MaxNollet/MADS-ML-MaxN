@@ -1,0 +1,52 @@
+# Ethics
+
+## Model comparison
+
+Ethical models share the common goal of providing readers with a systematic approach to ethical decision making,yet include unique elements that provide varying contextual recommendations [@suarez2023]. Some models offer a generalisable approach affording wider applicability to a variety of ethical situations, and other models provide guidance to navigate specific ethical situations.
+
+A recent literature review from 2023 considered a total of 55 ethical decision-making models across 60 peer-reviewed journal articles of varying fields of study [@suarez2023]. Medicine dominated the resulting set of models, followed by psychology, education, business, then child and youth care and organizational behaviour management. From these fields of study, two models are considered for comparison. The first model is from the medicine, to be more precise: epidemiology [@soskolne1991] and the second model from the secondary field of teaching within education [@ehrich2011]. The steps of both models are displayed in @tbl-letters.
+
+| Step | Medicine – epidemiology | Education - teaching |
+|------------------|---------------------------|---------------------------|
+| 1 | Data collection. | Assess the situation and the specific agency requirements. |
+| 2 | Identification of the problem or dilemma. | Considering dispositional factors. |
+| 3 | Identification of alternative actions. | Making a comprehensive assessment of the alternatives. |
+| 4 | Making a choice. | Make a judgement. |
+| 5 | Taking action and evaluating the action. | Documenting the decision and being able to justify it. |
+
+: Steps of two ethical decision models. {#tbl-letters}
+
+### Similarities
+
+Both models require an assessment of the situation. In epidemiology this is based on data, while in teaching this is based on agency requirements and dispositional factors. This assessment forms the basis for the problem or dilemma identification. Also, both models require identification of alternatives and making a choice or judgement based on the best alternative. Al last, both models are sequential.
+
+### Differences
+
+The epidemiology model has a problem-solving component, while the teaching model does not. A problem-solving component is present if the model author(s) guided the model users to identify two or more possible solutions and likely outcomes or consequences to the possible solutions. The epidemiology model encourages users to identify multiple solutions and evaluate them after making a decision, while the teaching model only encourages identification of multiple solutions. Another difference is that the epidemiology model indicates that a decision can be changed later when a solution is not good enough after evaluation, while the teaching model does not.
+
+### Preference & suitability
+
+Personally I prefer the epidemiology ethical model as it allows changing the decision if it turns out that is is not the optimal decision after evaluation. This is also better suited for data science. Suppose some actions are taken prevent a data science model from discrimination but in practice it does not work, this ethical model allows us to change our decision and take different actions for preventing discrimination. For the teaching ethical model, once a decision is made, it set sort of ‘set in stone’.
+
+The epidemiology ethical model is also better suited for data science as it focusses on data for the problem identification and alternative actions.
+
+## Breeze matching
+
+This assignment is about a discriminating matchmaking algorithm of the Dutch dating app Breeze [@dating-a2023]. This matchmaking algorithm calculates a so-called matching chance: an indication of how likely one person may like the other person. Matchmaking happens automatically and is learnt from data that people put into their Breeze profiles and the like-behaviour (users of the Breeze app that indicate whether they like someone or not).
+
+The developers of the app, Breeze Social B.V., got the suspicion that their algorithm was discriminating as some customers made complaints. They indicated that people suggested by the algorithm were not diverse enough, leading to people with a dark skin colour or non-Dutch background to stop using the app.
+
+Breeze Social B.V. asked the Netherlands Institute for Human Rights whether they are allowed to adjust their algorithm to stop it from discriminating. I think that they made the right choice to at least questioning whether their algorithm was ethically sound. This shows a sense of ownership and responsibility regarding their algorithm. The institute indicated that Breeze Social B.V. are allowed and, in fact, must adjust the algorithm to stop it from discriminating. The first suggested adjustment was to raise the matching chance of people with a certain skin colour but was rejected by the institute. As the article points out, this leads to the opposite: the algorithm still discriminates but now favours some people with a certain skin colour. This is not ideal in my opinion as some people get some sort of priority treatment this way. The second suggested adjustment was better: compensate the matching score to be equally high for all skin colours. Now there is no discrimination happening and everyone is at least equally often suggested to other people.
+
+### Dilemma visualisation
+
+The dilemma described above is visualised as a directed acyclic graph (DAG) in @fig-breeze-dag. There are 3 distinct components: 1) stakeholders, 2) choices and 3) consequences. Choices are for Breeze Social B.V. and the results are focussed towards the users of Breeze, how a choice would affect a group of users.
+
+After making this diagram I realised that the motivation for changing the matchmaking algorithm is not really made clear. The article mentioned customer complaints, but is that the real motivation? Breeze Social B.V. is a company that needs money to continue existing and they get that from their users, as one needs to pay upfront for a date (after a match was made). Is it goodwill to please their customers or is it really more about maximising their income? In either case, both parties would benefit if the algorithm would not discriminate.
+
+![A directed acyclic graph (DAG) visualisation of the discriminating Breeze matchmaking algorithm dilemma.](breeze_dag.svg){#fig-breeze-dag}
+
+## References
+
+::: {#refs}
+:::

@@ -1,0 +1,29 @@
+# Deployment
+
+This is the deployment of a street language generator, using Docker. The generator was trained on [Helmonds dialect](https://www.mijnwoordenboek.nl/dialect/Helmonds){.external target="_blank"} in a fully automated fashion using a Makefile. The street language generator is available on [https://slanggen.mxlab.nl/](https://slanggen.mxlab.nl/){.external target="_blank"}. For reference, a screenshot of the generator can be found in @fig-street-language-generator.
+
+::: {.callout-note collapse="true"}
+## Note: start the VM
+
+The street language generator is hosted on a SURF Research Cloud virtual machine (VM). You might need to start the VM, as it is paused by default to conserve credits. To start the VM, do the following:
+
+1.  Open the [SURF Research Cloud dashboard](https://sram.surf.nl/collaborations/6111/about){.external target="_blank"}.
+2.  Search for `UOS3-MJHNollet`.
+3.  Click on `Resume ▶️`.
+4.  Wait for the VM to resume.
+:::
+
+![Screenshot of the working street language generator (Helmonds)](slanggen_demo.png){#fig-street-language-generator}
+
+The street language generator is available as a Docker image on <https://github.com/MaxNollet/MADS-ML-MaxN/pkgs/container/slanggen>{.external target="_blank"}. Below is an example Docker compose to run the model:
+
+``` yml
+---
+services:
+  slanggen:
+    image: ghcr.io/maxnollet/slanggen:0.4
+    container_name: slanggen
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+```

@@ -1,0 +1,33 @@
+# MLflow {#sec-mlflow}
+
+The model in @sec-grid-search was refined further with the addition of the following three types of layers:
+
+1.  Dropout.
+2.  Convolutions.
+3.  Normalisation.
+
+## Dropout layers
+
+Dropout is expected to make it harder for the model during training to learn from the dataset by randomly deactivating neurons. By doing this, the model should create some redundancy to overcome the dropout. But when evaluating/testing, dropout is not applied and the redundancy should result in a lower loss score.
+
+## Convolutional layers
+
+Instead of having fully connected (linear) layers, convolutional layers are an alternative that require war fewer neurons and can thus process larger pictures than fully connected layers. This works by moving a kernel over the input that is expected to learn different features from the input. It is therefore expected that a convolutional layer can learn different features faster than fully connected layers.
+
+## Batch normalisation
+
+This type of layer re-centers the outputs of the previous layer around zero and re-scales them to a standard size. In theory this helps the model learn faster and combats exploding and vanishing gradients. Naturally, it is expected that the model converges faster with batch normalisation.
+
+## Hyperparameter effects
+
+The effects of the experiments listed abore are visualised in @fig-results-mlflow. First, different percentages of dropout were experimented with. It became clear that higher percentages of dropout can reduce the model's ability to converge and it takes longer to converge, as seen in @fig-results-dropout. Then the first 2 fully connected layers were replaced with convolutional layers. Suddenly the model was able to converge really fast in about 6 epochs, as seen in @fig-results-convolutions. But it also indicates that the model was getting quite complex and started overfitting. At last, batch normalisation was applied and now the model converged even faster (see @fig-results-normalisation): in 3 epochs the test loss score reached a plateau. It interestingly also had the effect that the model didn't overfit as fast as without batch normalisation.
+
+::: {#fig-results-mlflow layout-ncol="3"}
+![Dropout](results_02_dropout.png){#fig-results-dropout}
+
+![Convolutions](results_02_convolutional.png){#fig-results-convolutions}
+
+![Normalisation](results_02_normalisation.png){#fig-results-normalisation}
+
+Effects of hyperparameters left to right a) dropout, b) convolutions & c) normalisation on test dataset loss.
+:::

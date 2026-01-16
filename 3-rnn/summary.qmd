@@ -1,0 +1,57 @@
+# RNN
+
+## Default GRU model
+
+To start, the following parameters of the default GRU model is capable to reach 90% accuracy after 14 epochs instead of the default 3 (see @fig-accuracy-gru-default):
+
+``` python
+config = ModelConfig(
+    input_size=3,
+    hidden_size=64,
+    num_layers=1,
+    output_size=20,
+    dropout=0.1,
+)
+```
+
+![Accuracy metric from the default GRU model.](metric_accuracy_gru_default.svg){#fig-accuracy-gru-default}
+
+Adjustments to the default GRU model or different models are considered 'better' if it can reach at least 90% accuracy in less than 14 epochs.
+
+## GRU tweaking
+
+Improving the default GRU model was surprisingly easy. What was learnt in @sec-grid-search about (hidden) layers and the number of units/neurons, along with dropout from @sec-mlflow, these three hyperparameters were manually tuned. It resulted in a GRU model that can reach 90% accuracy in only 4 epochs (see @fig-gru-tweaked-accuracy) and was not overfitting (see @fig-gru-tweaked-loss). Surprisingly the number of units/neurons in (hidden) layers heavily influenced the GRU model. More units/neurons almost always increased the pace of convergence, and anything below 32 units/neurons made the model really slow to converge.
+
+``` python
+config = ModelConfig(
+    input_size=3,
+    hidden_size=128 + 32,  # Changed, was 64
+    num_layers=3,          # Changed, was 1
+    output_size=20,
+    dropout=0.2,           # changed, was 0.1
+)
+```
+
+::: {#fig-results-gru-tweaked layout-ncol="2"}
+![Accuracy metric from the default GRU model.](metric_accuracy_gru_tweaked.svg){#fig-gru-tweaked-accuracy}
+
+![Accuracy metric from the default GRU model.](loss_test_gru_tweaked.svg){#fig-gru-tweaked-loss}
+
+Results of manual hyperparameter tuning for a GRU model.
+:::
+
+## LSTM model
+
+This type of model had another peculiarity. Like GRU, LSTM was able to reach 90% accuracy in fast in 10 epochs. But unlike GRU, LSTM was highly susceptible more units/neurons and layers, making it converge slower (seen in @fig-results-accuracy-lstm). Instead, having fewer units/neurons and layers than GRU benefited LSTM. Below are the optimal hyperparameters for the LSTM model with this dataset:
+
+``` python
+config = ModelConfig(
+    input_size=3,
+    output_size=20,
+    hidden_size=96,
+    num_layers=2,
+    dropout=0.2,
+)
+```
+
+![Effects of different hyperparameters on convergence rate of an LSTM model.](metric_accuracy_lstm.png){#fig-results-accuracy-lstm}

@@ -1,0 +1,34 @@
+project:
+  type: book
+
+bibliography: assets/references.bib
+csl: assets/apa.csl
+
+book:
+  title: "MADS portfolio"
+  author:
+    - name: Max Nollet
+      degrees: BSc
+      affiliation:
+        - name: HAN University of Applied Sciences
+          url: https://www.han.nl/
+          isni: 0000000088092093
+  date: last-modified
+  chapters:
+    - index.qmd
+    - 1-gridsearch/summary.qmd
+    - 2-mlflow/summary.qmd
+    - 3-rnn/summary.qmd
+    - 4-ray/summary.qmd
+    - 5-deployment/summary.qmd
+    - 6-ethics/summary.qmd
+  sidebar:
+    tools:
+      - icon: github
+        href: https://github.com/MaxNollet/MADS-ML-MaxN
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand

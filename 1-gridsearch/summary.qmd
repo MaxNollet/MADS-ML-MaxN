@@ -1,0 +1,31 @@
+# Grid search {#sec-grid-search}
+
+## Number of epochs
+
+The number of epochs controls how often the full dataset is shown to the model. More epochs means that the model can potentially learn more from the dataset as the model is allowed 'more time' to learn. It is expected that more epochs result in a lower loss over time, if the model is complex and capable enough for the given dataset. When the loss reaches a plateau, having more epochs after are not expected to make a meaningful difference anymore and the model is considered to be 'done learning'.
+
+## Number of units/neurons
+
+Each unit/neuron has it's own perspective on the previous layer, potentially learning something else than other neurons in the same layer. Having many units/neurons in a layer allows learning of many features. It is expected that layers with too few units/neurons result in a model incapable of converging.
+
+## Number of (hidden) layers
+
+Layers in a neural network are not expected to learn individual features per se, but rather (complex) relationships in the data. When a dataset is complex, multiple layers are likely needed for the model to converge.
+
+## Hyperparameter effects
+
+The results of the aforementioned experiments are visualised in @fig-results-gridsearch. The number of epochs in @fig-results-epochs that the model stops learning at around 10 epochs. The number of units/neurons was then hypertuned and @fig-results-units shows that the model is learning more in a shorter time. At last, the number of (hidden) layers was hypertuned. As shown in @fig-results-layers, the model is more complex and has a higher loss score initially, but manages to learn even faster due to the increased complexity. All three hyperparameters play together to craft a model.
+
+::: {#fig-results-gridsearch layout-ncol="3"}
+![Epochs](results_01_epochs.png){#fig-results-epochs}
+
+![Units/neurons](results_01_units.png){#fig-results-units}
+
+![Layers](results_01_layers.png){#fig-results-layers}
+
+Effects of hyperparameters left to right a) epochs, b) units/neurons & c) layers on test dataset loss.
+:::
+
+## Grid search approach
+
+At last, grid search is killing when the parameter space is big. For example: when having just 2 layers and 3 options for the number of units/neurons, the number of options in the hyperparameter search space is just $3^2 = 9$. But when there are 7 layers and 5 options for the number of units/neurons per layer, then there are suddenly $5^7 = 78.125$ options. Assuming every experiment lasts 30 seconds, searching through 9 options only takes 4,5 minutes. But the latter case then takes about a whopping 27 days to search through.
